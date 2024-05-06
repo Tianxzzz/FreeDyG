@@ -110,10 +110,6 @@ class FreeDyG(nn.Module):
         dst_nodes_neighbor_node_raw_features, dst_nodes_edge_raw_features, dst_nodes_neighbor_time_features = \
             self.get_features(node_interact_times=node_interact_times, nodes_neighbor_ids=dst_nodes_neighbor_ids,
                               nodes_edge_ids=dst_nodes_edge_ids, nodes_neighbor_times=dst_nodes_neighbor_times, time_encoder=self.time_encoder)
-             # get the patches for source and destination nodes
-        # src_patches_nodes_neighbor_node_raw_features, Tensor, shape (batch_size, src_num_patches, patch_size * node_feat_dim)
-        # src_patches_nodes_edge_raw_features, Tensor, shape (batch_size, src_num_patches, patch_size * edge_feat_dim)
-        # src_patches_nodes_neighbor_time_features, Tensor, shape (batch_size, src_num_patches, patch_size * time_feat_dim)
         
         src_nodes_neighbor_node_raw_features = self.projection_layer['node'](src_nodes_neighbor_node_raw_features)
         src_nodes_edge_raw_features = self.projection_layer['edge'](src_nodes_edge_raw_features)
@@ -263,7 +259,7 @@ class NIFEncoder(nn.Module):
         src_nodes_appearances, dst_nodes_appearances = self.count_nodes_appearances(src_node_ids=src_node_ids,dst_node_ids=dst_node_ids,src_nodes_neighbor_ids=src_nodes_neighbor_ids,
                                                                                                   dst_nodes_neighbor_ids=dst_nodes_neighbor_ids)
 
-        # sum the neighbor co-occurrence features in the sequence of source and destination nodes
+       
         # Tensor, shape (batch_size, src_max_seq_length, nif_feat_dim)
         
         # Tensor, shape (batch_size, dst_max_seq_length, nif_feat_dim)

@@ -315,7 +315,7 @@ class FilterLayer(nn.Module):
 
         self.Dropout = nn.Dropout(0.1)
 
-        self.LayerNorm = nn.LayerNorm(hidden_dim)
+        # self.LayerNorm = nn.LayerNorm(hidden_dim)
 
     def forward(self, input_tensor: torch.Tensor):
       
@@ -332,7 +332,7 @@ class FilterLayer(nn.Module):
 
         sequence_emb_fft = sequence_emb_fft[:,0:seq_len,:]
         hidden_states = self.Dropout(sequence_emb_fft)
-        hidden_states = self.LayerNorm(hidden_states + input_tensor)
+        hidden_states = hidden_states + input_tensor
 
         return hidden_states
 

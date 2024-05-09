@@ -19,9 +19,6 @@ class FreeDyG(nn.Module):
         :param neighbor_sampler: neighbor sampler
         :param time_feat_dim: int, dimension of time features (encodings)
         :param channel_embedding_dim: int, dimension of each channel embedding
-        :param patch_size: int, patch size
-        :param num_layers: int, number of transformer layers
-        :param num_heads: int, number of attention heads
         :param dropout: float, dropout rate
         :param max_input_sequence_length: int, maximal length of the input sequence for each node
         :param device: str, device
